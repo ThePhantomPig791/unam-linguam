@@ -1,0 +1,23 @@
+{
+  "name": "Ought",
+  "verbs": {
+    "ought": {
+      "english": {
+        "infinitive": "ought",
+        "present_participle": "",
+        "past": "",
+        "past_participle": "ought"
+      },
+      "latin": {
+        "present": "debeo",
+        "infinitive": "debere",
+        "perfect": "debui",
+        "past_participle": "debitus",
+        "conjugation": "second"
+      },
+      "tags": [
+        "auxiliary"
+      ]
+    }
+  }
+}

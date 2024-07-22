@@ -40,6 +40,7 @@ public class WordListRegistry {
             paths.filter(Files::isRegularFile)
                 .forEach(path -> {
                     String filename = path.getFileName().toString().substring(0, path.getFileName().toString().indexOf("."));
+                    if (filename.equals("ignore")) return;
                     try {
                         JsonObject json = gson.fromJson(new JsonReader(new FileReader(path.toFile())), JsonObject.class);
                         String name = json.get(NAME_FIELD).getAsJsonPrimitive().getAsString();

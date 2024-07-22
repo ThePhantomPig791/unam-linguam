@@ -24,15 +24,13 @@ public class LatinVerb extends LatinWord {
     }
 
     public String get() {
+        String stem = wordEntry.infinitive;
+        stem = stem.substring(0, stem.lastIndexOf(VerbEndings.INFINITIVE_STEMS[wordEntry.conjugation.ordinal()]));
         if (!tense.isPerfect()) {
-            String stem = wordEntry.infinitive;
-            stem = stem.substring(0, stem.lastIndexOf(VerbEndings.INFINITIVE_STEMS[wordEntry.conjugation.ordinal()]));
-
             String stemVowel = VerbEndings.getStemVowel(wordEntry.conjugation, tense, number, person);
-
             return stem + stemVowel + VerbEndings.getEndings(wordEntry.conjugation)[tense.ordinal()][number.ordinal()][person.ordinal()];
         } else {
-            String stem = wordEntry.perfect;
+            stem = wordEntry.perfect;
             stem = stem.substring(0, stem.lastIndexOf(VerbEndings.PERFECT_ENDINGS[tense.ordinal() - 3][0][0]));
 
             return stem + VerbEndings.PERFECT_ENDINGS[tense.ordinal() - 3][number.ordinal()][person.ordinal()];

@@ -18,7 +18,7 @@ import wordentry.latin.LatinVerbEntry;
 
 public class IndependentClause {
     @NotNull
-    public final WordPair verb;
+    public final VerbPhrase verb;
     @Nullable
     public final WordPair subject;
     @Nullable
@@ -26,18 +26,11 @@ public class IndependentClause {
     // TODO indirect objects
 
     public IndependentClause() {
-        WordEntryPair verb = WordListRegistry.randomWord(PartOfSpeech.VERB);
-        Tense tense = Tense.randomIndependent();
-        Number number = Number.random();
-        Person person = Person.randomWeighted();
-        this.verb = new WordPair(
-                new EnglishVerb((EnglishVerbEntry) verb.getEnglish(), tense, number, person),
-                new LatinVerb((LatinVerbEntry) verb.getLatin(), tense, number, person)
-        );
+        this.verb = new VerbPhrase();
 
         if (verb.tags.contains("transitive")) {
             WordEntryPair directObject = WordListRegistry.randomWord(PartOfSpeech.NOUN);
-            number = Number.random();
+            Number number = Number.random();
             this.directObject = new WordPair(
                     new EnglishNoun((EnglishNounEntry) directObject.getEnglish(), number),
                     new LatinNoun((LatinNounEntry) directObject.getLatin(), NounCase.ACCUSATIVE, number)
@@ -46,9 +39,9 @@ public class IndependentClause {
             directObject = null;
         }
 
-        if (((LatinVerb)this.verb.latin).person == Person.THIRD) {
-            WordEntryPair subject = WordListRegistry.randomWord(PartOfSpeech.NOUN, (((LatinVerb) this.verb.latin).number == Number.PLURAL) ? entry -> !entry.tags.contains("mass") : entry -> true);
-            number = ((LatinVerb) this.verb.latin).number;
+        if (verb.person == Person.THIRD) {
+            WordEntryPair subject = WordListRegistry.randomWord(PartOfSpeech.NOUN, (verb.number == Number.PLURAL) ? entry -> !entry.tags.contains("uncountable") : entry -> true);
+            Number number = verb.number;
             this.subject = new WordPair(
                     new EnglishNoun((EnglishNounEntry) subject.getEnglish(), number),
                     new LatinNoun((LatinNounEntry) subject.getLatin(), NounCase.NOMINATIVE, number)
@@ -61,13 +54,29 @@ public class IndependentClause {
 
     public String assembleLatin() {
         String result = "";
-        if (subject != null) {
-            result += ((LatinNoun) subject.latin).get() + " ";
+
+        if (verb.type == VerbPhrase.Type.INTERROGATIVE) {
+            result += verb.assembleLatin();
+            if (subject != null) {
+                result += " " + ((LatinNoun) subject.latin).get();
+            }
+            if (directObject != null) {
+                result += " " + ((LatinNoun) directObject.latin).get();
+            }
+        } else {
+            if (subject != null) {
+                result += ((LatinNoun) subject.latin).get() + " ";
+            }
+            if (directObject != null) {
+                result += ((LatinNoun) directObject.latin).get() + " ";
+            }
+            result += verb.assembleLatin();
         }
-        if (directObject != null) {
-            result += ((LatinNoun) directObject.latin).get() + " ";
+
+        if (!result.isEmpty()) {
+            result = result.substring(0, 1).toUpperCase() + result.substring(1);
         }
-        result += ((LatinVerb) verb.latin).get();
+        result += (verb.type == VerbPhrase.Type.INTERROGATIVE) ? "?" : ".";
         return result;
     }
 }

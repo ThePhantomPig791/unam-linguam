@@ -1,0 +1,9 @@
+Recognized tags:
+
+verbs:
+-transitive
+-auxiliary
+
+nouns:
+-proper
+-uncountable

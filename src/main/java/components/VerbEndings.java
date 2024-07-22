@@ -3,6 +3,7 @@ package components;
 public class VerbEndings {
     // remember third_io is a conjugation in my implementation, thus 5 conjugations
     public static final String[] INFINITIVE_STEMS = {"are", "ere", "ere", "ere", "ire"};
+    public static final String[][] IMPERATIVE_ENDINGS = {{"a", "ate"}, {"e", "ete"}, {"e", "ite"}, {"e", "ite"}, {"i", "ite"}};
 
     // tense (ordinal minus 3), number, person
     public static final String[][][] PERFECT_ENDINGS = {
