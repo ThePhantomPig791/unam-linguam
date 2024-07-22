@@ -1,0 +1,20 @@
+{
+  "name": "Names",
+  "nouns": {
+    "marcus": {
+      "english": {
+        "singular": "Marcus",
+        "plural": "null"
+      },
+      "latin": {
+        "nominative": "Marcus",
+        "genitive": "Marci",
+        "declension": "second",
+        "gender": "masculine"
+      },
+      "tags": [
+        "mass"
+      ]
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Chapter 1",
+  "verbs": {
+    "to_sit": {
+      "english": {
+        "infinitive": "sit",
+        "present_participle": "sitting",
+        "past": "sat",
+        "past_participle": "sat"
+      },
+      "latin": {
+        "present": "sedeo",
+        "infinitive": "sedere",
+        "perfect": "sedi",
+        "past_participle": "sessus",
+        "conjugation": "second"
+      }
+    }
+  },
+  "nouns": {
+    "girl": {
+      "english": {
+        "singular": "girl",
+        "plural": "girls"
+      },
+      "latin": {
+        "nominative": "puella",
+        "genitive": "puellae",
+        "declension": "first",
+        "gender": "feminine"
+      }
+    }
+  },
+  "adjectives": {
+    "happy": {
+      "english": {
+        "adjective": "happy"
+      },
+      "latin": {
+        "masculine": "laetus",
+        "feminine": "laeta",
+        "neutered": "laetum",
+        "declension": "first"
+      }
+    }
+  }
+}
