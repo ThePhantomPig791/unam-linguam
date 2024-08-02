@@ -1,4 +1,4 @@
-package sentence;
+package sentence.verb;
 
 import components.Number;
 import components.PartOfSpeech;
@@ -19,8 +19,6 @@ import wordentry.latin.LatinVerbEntry;
 import java.util.ArrayList;
 
 public class VerbPhrase {
-    public final Type type;
-
     @NotNull
     public final WordPair verb;
     @Nullable
@@ -33,17 +31,10 @@ public class VerbPhrase {
     public final ArrayList<String> tags;
 
     public VerbPhrase() {
-        int random = (int) (Math.random() * 100);
-        if (random >= 90) {
-            this.type = Type.INTERROGATIVE;
-        } else {
-            this.type = Type.SIMPLE;
-        }
-
         WordEntryPair verb = WordListRegistry.randomWord(PartOfSpeech.VERB);
 
         if (verb.tags.contains("auxiliary")) {
-            Tense tense = Tense.randomIndependent();
+            Tense tense = verb.randomTense();
             Number number = Number.random();
             Person person = Person.randomWeighted();
             this.verb = new WordPair(
@@ -83,22 +74,10 @@ public class VerbPhrase {
 
     public String assembleLatin() {
         String result = "";
-        if (type == Type.SIMPLE) {
-            if (infinitive != null) {
-                result += ((LatinInfinitiveVerb) infinitive.latin).get() + " ";
-            }
-            result += ((LatinVerb) verb.latin).get();
-        } else {
-            result += ((LatinVerb) verb.latin).get() + "ne";
-            if (infinitive != null) {
-                result += " " + ((LatinInfinitiveVerb) infinitive.latin).get();
-            }
+        if (infinitive != null) {
+            result += ((LatinInfinitiveVerb) infinitive.latin).get() + " ";
         }
+        result += ((LatinVerb) verb.latin).get();
         return result;
-    }
-
-    public enum Type {
-        SIMPLE, // one conjugated verb with or without an infinitive
-        INTERROGATIVE // one conjugated verb with an enclitic -ne
     }
 }

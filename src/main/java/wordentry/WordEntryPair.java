@@ -1,6 +1,7 @@
 package wordentry;
 
 import components.PartOfSpeech;
+import components.Tense;
 import wordentry.english.EnglishWordEntry;
 import wordentry.latin.LatinWordEntry;
 
@@ -63,6 +64,13 @@ public class WordEntryPair {
     }
     public boolean matches(LatinWordEntry l) {
         return latin.contains(l);
+    }
+
+
+    public Tense randomTense() {
+        Tense tense = Tense.randomIndependent();
+        if (tense == Tense.IMPERFECT && tags.contains("stative")) tense = Tense.PRESENT;
+        return tense;
     }
 
 

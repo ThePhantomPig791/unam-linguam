@@ -1,5 +1,5 @@
 {
-  "name": "Ought",
+  "name": "Test Words",
   "verbs": {
     "ought": {
       "english": {
@@ -16,7 +16,8 @@
         "conjugation": "second"
       },
       "tags": [
-        "auxiliary"
+        "auxiliary",
+        "stative"
       ]
     }
   }

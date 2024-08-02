@@ -1,9 +1,10 @@
 Recognized tags:
 
 verbs:
--transitive
--auxiliary
+-transitive - takes a direct object, otherwise assumed to be intransitive
+-auxiliary - takes a complementary infinitive
+-stative - unable to be expressed continuously; disallows the imperfect tense and any English translation ending in -ing
 
 nouns:
--proper
--uncountable
+-proper - a proper noun; capitalizes the first letter
+-uncountable - unable to be plural

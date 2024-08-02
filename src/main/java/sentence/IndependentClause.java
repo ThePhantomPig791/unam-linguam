@@ -4,17 +4,15 @@ import components.*;
 import components.Number;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import sentence.verb.InterrogativeVerbPhrase;
+import sentence.verb.VerbPhrase;
 import word.WordPair;
 import word.english.EnglishNoun;
-import word.english.EnglishVerb;
 import word.latin.LatinNoun;
-import word.latin.LatinVerb;
 import wordentry.WordEntryPair;
 import wordentry.WordListRegistry;
 import wordentry.english.EnglishNounEntry;
-import wordentry.english.EnglishVerbEntry;
 import wordentry.latin.LatinNounEntry;
-import wordentry.latin.LatinVerbEntry;
 
 public class IndependentClause {
     @NotNull
@@ -26,7 +24,12 @@ public class IndependentClause {
     // TODO indirect objects
 
     public IndependentClause() {
-        this.verb = new VerbPhrase();
+        double random = Math.random();
+        if (random <= 0.9) {
+            this.verb = new VerbPhrase();
+        } else {
+            this.verb = new InterrogativeVerbPhrase();
+        }
 
         if (verb.tags.contains("transitive")) {
             WordEntryPair directObject = WordListRegistry.randomWord(PartOfSpeech.NOUN);
@@ -55,7 +58,7 @@ public class IndependentClause {
     public String assembleLatin() {
         String result = "";
 
-        if (verb.type == VerbPhrase.Type.INTERROGATIVE) {
+        if (verb instanceof InterrogativeVerbPhrase) {
             result += verb.assembleLatin();
             if (subject != null) {
                 result += " " + ((LatinNoun) subject.latin).get();
@@ -76,7 +79,7 @@ public class IndependentClause {
         if (!result.isEmpty()) {
             result = result.substring(0, 1).toUpperCase() + result.substring(1);
         }
-        result += (verb.type == VerbPhrase.Type.INTERROGATIVE) ? "?" : ".";
+        result += (verb instanceof InterrogativeVerbPhrase) ? "?" : ".";
         return result;
     }
 }
