@@ -40,7 +40,8 @@
         "masculine": "laetus",
         "feminine": "laeta",
         "neutered": "laetum",
-        "declension": "first"
+        "declension": "first",
+        "termination": "three"
       }
     }
   }

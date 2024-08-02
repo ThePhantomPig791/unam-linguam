@@ -1,6 +1,7 @@
 package json;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
 public class GsonHelper {
@@ -11,5 +12,10 @@ public class GsonHelper {
         } else {
             throw new JsonSyntaxException("Expected an array or primitive");
         }
+    }
+
+    public static String getAsString(JsonObject json, String key, String fallback) {
+        if (json.has(key)) return json.get(key).getAsString();
+        return fallback;
     }
 }

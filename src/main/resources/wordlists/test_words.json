@@ -20,5 +20,23 @@
         "stative"
       ]
     }
+  },
+  "adjectives": {
+    "old": {
+      "english": [
+        {
+          "adjective": "old"
+        },
+        {
+          "adjective": "ancient"
+        }
+      ],
+      "latin": {
+        "nominative": "vetus",
+        "genitive": "veteris",
+        "declension": "third",
+        "termination": "one"
+      }
+    }
   }
 }

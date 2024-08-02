@@ -4,23 +4,17 @@ import components.*;
 import components.Number;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import sentence.noun.NounPhrase;
 import sentence.verb.InterrogativeVerbPhrase;
 import sentence.verb.VerbPhrase;
-import word.WordPair;
-import word.english.EnglishNoun;
-import word.latin.LatinNoun;
-import wordentry.WordEntryPair;
-import wordentry.WordListRegistry;
-import wordentry.english.EnglishNounEntry;
-import wordentry.latin.LatinNounEntry;
 
 public class IndependentClause {
     @NotNull
     public final VerbPhrase verb;
     @Nullable
-    public final WordPair subject;
+    public final NounPhrase subject;
     @Nullable
-    public final WordPair directObject;
+    public final NounPhrase directObject;
     // TODO indirect objects
 
     public IndependentClause() {
@@ -32,23 +26,13 @@ public class IndependentClause {
         }
 
         if (verb.tags.contains("transitive")) {
-            WordEntryPair directObject = WordListRegistry.randomWord(PartOfSpeech.NOUN);
-            Number number = Number.random();
-            this.directObject = new WordPair(
-                    new EnglishNoun((EnglishNounEntry) directObject.getEnglish(), number),
-                    new LatinNoun((LatinNounEntry) directObject.getLatin(), NounCase.ACCUSATIVE, number)
-            );
+            this.directObject = new NounPhrase(Number.random(), NounCase.ACCUSATIVE);
         } else {
             directObject = null;
         }
 
-        if (verb.person == Person.THIRD) {
-            WordEntryPair subject = WordListRegistry.randomWord(PartOfSpeech.NOUN, (verb.number == Number.PLURAL) ? entry -> !entry.tags.contains("uncountable") : entry -> true);
-            Number number = verb.number;
-            this.subject = new WordPair(
-                    new EnglishNoun((EnglishNounEntry) subject.getEnglish(), number),
-                    new LatinNoun((LatinNounEntry) subject.getLatin(), NounCase.NOMINATIVE, number)
-            );
+        if (verb.person == Person.THIRD && Math.random() < 0.9) {
+            this.subject = new NounPhrase(verb.number, NounCase.NOMINATIVE);
         } else {
             // TODO first and second subject pronouns
             subject = null;
@@ -61,17 +45,17 @@ public class IndependentClause {
         if (verb instanceof InterrogativeVerbPhrase) {
             result += verb.assembleLatin();
             if (subject != null) {
-                result += " " + ((LatinNoun) subject.latin).get();
+                result += " " + subject.getLatin();
             }
             if (directObject != null) {
-                result += " " + ((LatinNoun) directObject.latin).get();
+                result += " " + directObject.getLatin();
             }
         } else {
             if (subject != null) {
-                result += ((LatinNoun) subject.latin).get() + " ";
+                result += subject.getLatin() + " ";
             }
             if (directObject != null) {
-                result += ((LatinNoun) directObject.latin).get() + " ";
+                result += directObject.getLatin() + " ";
             }
             result += verb.assembleLatin();
         }
