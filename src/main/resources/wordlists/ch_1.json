@@ -5,6 +5,7 @@
       "english": {
         "infinitive": "sit",
         "present_participle": "sitting",
+        "third_person_singular": "sits",
         "past": "sat",
         "past_participle": "sat"
       },
