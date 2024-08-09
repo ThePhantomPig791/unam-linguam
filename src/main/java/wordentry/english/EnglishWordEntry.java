@@ -1,3 +1,7 @@
 package wordentry.english;
 
-public abstract class EnglishWordEntry {}
+import java.util.ArrayList;
+
+public abstract class EnglishWordEntry {
+    public final ArrayList<String> tags = new ArrayList<>();
+}

@@ -1,5 +1,7 @@
 package components;
 
+import util.Percentages;
+
 public enum Person {
     FIRST,
     SECOND,
@@ -10,9 +12,8 @@ public enum Person {
     }
 
     public static Person randomWeighted() {
-        int random = (int) (Math.random() * 100);
-        if (random >= 50) return THIRD;
-        else if (random >= 20) return FIRST;
+        if (Math.random() < Percentages.third_person_chance) return THIRD;
+        if (Math.random() < Percentages.first_person_chance) return FIRST;
         return SECOND;
     }
 }

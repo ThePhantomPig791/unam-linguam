@@ -18,7 +18,7 @@
       },
       "tags": [
         "auxiliary",
-        "stative"
+        "forward"
       ]
     }
   },
@@ -26,10 +26,12 @@
     "old": {
       "english": [
         {
-          "adjective": "old"
+          "adjective": "old",
+          "priority": 4
         },
         {
-          "adjective": "ancient"
+          "adjective": "ancient",
+          "priority": 4
         }
       ],
       "latin": {

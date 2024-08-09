@@ -16,4 +16,8 @@ public class EnglishAdjective extends EnglishWord {
     public EnglishAdjective(EnglishAdjectiveEntry entry) {
         this(entry, Number.random());
     }
+
+    public String get() {
+        return wordEntry.adjective;
+    }
 }

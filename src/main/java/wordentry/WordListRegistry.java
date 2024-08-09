@@ -4,6 +4,8 @@ import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import json.GsonHelper;
 import components.PartOfSpeech;
+import word.WordPair;
+import word.english.EnglishWord;
 import wordentry.english.EnglishAdjectiveEntry;
 import wordentry.english.EnglishNounEntry;
 import wordentry.english.EnglishVerbEntry;

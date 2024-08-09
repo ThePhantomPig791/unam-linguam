@@ -80,4 +80,11 @@ public class VerbPhrase {
         result += ((LatinVerb) verb.latin).get();
         return result;
     }
+    public String assembleEnglish() {
+        String result = ((EnglishVerb) verb.english).get();
+        if (infinitive != null) {
+            result += " to " + ((EnglishInfinitiveVerb) infinitive.english).get();
+        }
+        return result;
+    }
 }

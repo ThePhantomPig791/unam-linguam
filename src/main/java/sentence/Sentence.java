@@ -11,4 +11,7 @@ public class Sentence {
     public String assembleLatin() {
         return independentClause.assembleLatin();
     }
+    public String assembleEnglish() {
+        return independentClause.assembleEnglish();
+    }
 }

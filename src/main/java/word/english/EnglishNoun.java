@@ -15,4 +15,9 @@ public class EnglishNoun extends EnglishWord {
     public EnglishNoun(EnglishNounEntry entry) {
         this(entry, Number.random());
     }
+
+    public String get() {
+        if (number == Number.SINGULAR) return wordEntry.singular;
+        else return wordEntry.plural;
+    }
 }

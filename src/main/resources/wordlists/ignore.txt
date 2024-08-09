@@ -3,8 +3,24 @@ Recognized tags:
 verbs:
 -transitive - takes a direct object, otherwise assumed to be intransitive
 -auxiliary - takes a complementary infinitive
--stative - unable to be expressed continuously; disallows the imperfect tense and any English translation ending in -ing
+-forward - unable to be expressed continuously or in the past; disallows the imperfect tense, the past tense, any English translation ending in -ing
 
 nouns:
--proper - a proper noun; capitalizes the first letter
+-proper - a proper noun; capitalizes the first letter and disallows articles
 -uncountable - unable to be plural
+
+
+
+
+misc:
+
+adjective order (english only):
+0 - used for articles and demonstratives (those, this, these)
+1 - opinion
+2 - size
+3 - shape
+4 - age
+5 - color
+6 - origin
+7 - material
+8 - purpose

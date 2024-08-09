@@ -8,4 +8,8 @@ public class EnglishInfinitiveVerb extends EnglishWord {
     public EnglishInfinitiveVerb(EnglishVerbEntry entry) {
         this.wordEntry = entry;
     }
+
+    public String get() {
+        return wordEntry.infinitive;
+    }
 }

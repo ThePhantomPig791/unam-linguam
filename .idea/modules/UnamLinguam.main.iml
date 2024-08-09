@@ -18,5 +18,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-graphics:win:22.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-fxml:win:22.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:win:22.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-base:win:22.0.1" level="project" />
   </component>
 </module>

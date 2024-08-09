@@ -35,7 +35,8 @@
   "adjectives": {
     "happy": {
       "english": {
-        "adjective": "happy"
+        "adjective": "happy",
+        "priority": 1
       },
       "latin": {
         "masculine": "laetus",

@@ -46,10 +46,16 @@ public class WordEntryPair {
     }
 
     public void addTag(String tag) {
-        tags.add(tag);
+        addTags(List.of(tag));
     }
     public void addTags(List<String> tags) {
         this.tags.addAll(tags);
+        this.latin.forEach(entry -> {
+            entry.tags.addAll(tags);
+        });
+        this.english.forEach(entry -> {
+            entry.tags.addAll(tags);
+        });
     }
 
     public EnglishWordEntry getEnglish() {
@@ -69,7 +75,7 @@ public class WordEntryPair {
 
     public Tense randomTense() {
         Tense tense = Tense.randomIndependent();
-        if (tense == Tense.IMPERFECT && tags.contains("stative")) tense = Tense.PRESENT;
+        if ((tense == Tense.IMPERFECT || tense == Tense.PERFECT) && tags.contains("forward")) tense = Tense.PRESENT;
         return tense;
     }
 

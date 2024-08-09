@@ -21,4 +21,21 @@ public class EnglishVerb extends EnglishWord {
     public EnglishVerb(EnglishVerbEntry entry) {
         this(entry, Tense.randomIndependent(), Number.random(), Person.randomWeighted());
     }
+
+    public String get() {
+        if (tense == Tense.PRESENT) {
+            if (person == Person.THIRD && number == Number.SINGULAR) return wordEntry.thirdPersonSingular;
+            else return wordEntry.infinitive;
+        } else if (tense == Tense.FUTURE) {
+            return "will " + wordEntry.infinitive;
+        } else if (tense == Tense.PERFECT) {
+            return wordEntry.past;
+        } else if (tense == Tense.IMPERFECT) {
+            return ((number == Number.PLURAL || person == Person.SECOND) ? "were " : "was ") + wordEntry.presentParticiple;
+        } else if (tense == Tense.FUTURE_PERFECT) {
+            return "will have " + wordEntry.past;
+        } else { // pluperfect
+            return "had " + wordEntry.pastParticiple;
+        }
+    }
 }
