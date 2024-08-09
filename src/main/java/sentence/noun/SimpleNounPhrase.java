@@ -38,7 +38,7 @@ public class SimpleNounPhrase extends NounPhrase {
                 new LatinNoun((LatinNounEntry) noun.getLatin(), c, number)
         );
 
-        int adjectiveCount = Math.max(recursiveRandom(-1, Percentages.recursive_adjective_chance), 0);
+        int adjectiveCount = Math.max(recursiveRandom(-1, Percentages.recursive_adjective_chance.value), 0);
         this.adjectives = new WordPair[adjectiveCount];
         for (int i = 0; i < adjectiveCount; i++) {
             WordEntryPair adjective = WordListRegistry.randomWord(PartOfSpeech.ADJECTIVE, entry -> !Util.arrayContains(this.adjectives, entry));

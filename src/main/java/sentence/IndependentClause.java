@@ -20,7 +20,7 @@ public class IndependentClause {
 
     public IndependentClause() {
         double random = Math.random();
-        if (random < Percentages.interrogative_chance) {
+        if (random < Percentages.interrogative_chance.value) {
             this.verb = new InterrogativeVerbPhrase();
         } else {
             this.verb = new VerbPhrase();
@@ -32,7 +32,7 @@ public class IndependentClause {
             directObject = null;
         }
 
-        if (verb.person == Person.THIRD && Math.random() < Percentages.explicit_subject_chance) {
+        if (verb.person == Person.THIRD && Math.random() < Percentages.explicit_subject_chance.value) {
             this.subject = NounPhrase.getRandom(verb.number, NounCase.NOMINATIVE);
         } else {
             // TODO first and second subject pronouns

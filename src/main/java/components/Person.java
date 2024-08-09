@@ -12,8 +12,8 @@ public enum Person {
     }
 
     public static Person randomWeighted() {
-        if (Math.random() < Percentages.third_person_chance) return THIRD;
-        if (Math.random() < Percentages.first_person_chance) return FIRST;
+        if (Math.random() < Percentages.third_person_chance.value) return THIRD;
+        if (Math.random() < Percentages.first_person_chance.value) return FIRST;
         return SECOND;
     }
 }

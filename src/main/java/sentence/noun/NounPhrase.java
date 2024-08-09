@@ -7,7 +7,7 @@ import util.Percentages;
 public abstract class NounPhrase {
     public static NounPhrase getRandom(Number number, NounCase c) {
         double random = Math.random();
-        if (random < Percentages.compound_noun_phrase_chance && number == Number.PLURAL) {
+        if (random < Percentages.compound_noun_phrase_chance.value && number == Number.PLURAL) {
             return new CompoundNounPhrase(number, c);
         } else {
             return new SimpleNounPhrase(number, c);
