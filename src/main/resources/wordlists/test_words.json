@@ -41,5 +41,23 @@
         "termination": "one"
       }
     }
+  },
+  "adverbs": {
+    "quickly": {
+      "english": {
+        "adverb": "quickly"
+      },
+      "latin": {
+        "adverb": "celeriter"
+      }
+    },
+    "slowly": {
+      "english": {
+        "adverb": "slowly"
+      },
+      "latin": {
+        "adverb": "lente"
+      }
+    }
   }
 }

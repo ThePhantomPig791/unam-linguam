@@ -23,6 +23,10 @@ public class Percentages {
     public static PercentageSlider recursive_adjective_chance;
 
 
+    // adverbs
+    public static PercentageSlider recursive_adverb_chance;
+
+
     public static void init(Pane scrollPane) {
         PercentageSlider.sliderPane = scrollPane;
 
@@ -32,6 +36,7 @@ public class Percentages {
         first_person_chance = new PercentageSlider(0.7, "First Person Chance");
         compound_noun_phrase_chance = new PercentageSlider(0.4, "Compound Noun Phrase Chance");
         recursive_adjective_chance = new PercentageSlider(0.5, "Recursive Adjective Count Chance");
+        recursive_adverb_chance = new PercentageSlider(0.5, "Recursive Adverb Count Chance");
     }
 
     public static class PercentageSlider {

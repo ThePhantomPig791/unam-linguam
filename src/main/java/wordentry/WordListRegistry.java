@@ -6,14 +6,8 @@ import json.GsonHelper;
 import components.PartOfSpeech;
 import word.WordPair;
 import word.english.EnglishWord;
-import wordentry.english.EnglishAdjectiveEntry;
-import wordentry.english.EnglishNounEntry;
-import wordentry.english.EnglishVerbEntry;
-import wordentry.english.EnglishWordEntry;
-import wordentry.latin.LatinAdjectiveEntry;
-import wordentry.latin.LatinNounEntry;
-import wordentry.latin.LatinVerbEntry;
-import wordentry.latin.LatinWordEntry;
+import wordentry.english.*;
+import wordentry.latin.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -54,6 +48,7 @@ public class WordListRegistry {
                         parseEntries(json, "nouns", PartOfSpeech.NOUN, list, EnglishNounEntry::fromJson, LatinNounEntry::fromJson);
                         parseEntries(json, "verbs", PartOfSpeech.VERB, list, EnglishVerbEntry::fromJson, LatinVerbEntry::fromJson);
                         parseEntries(json, "adjectives", PartOfSpeech.ADJECTIVE, list, EnglishAdjectiveEntry::fromJson, LatinAdjectiveEntry::fromJson);
+                        parseEntries(json, "adverbs", PartOfSpeech.ADVERB, list, EnglishAdverbEntry::fromJson, LatinAdverbEntry::fromJson);
 
                         System.out.println("Finished parsing words for list " + list.name + " {" + list.id + "}\n");
                     } catch (FileNotFoundException e) {
